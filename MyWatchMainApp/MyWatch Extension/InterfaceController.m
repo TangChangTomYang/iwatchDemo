@@ -16,8 +16,30 @@
 
 @implementation InterfaceController
 
+
+-(void)test{
+    
+    NSURL *fileUrl = [NSURL URLWithString:@"https://pic.ibaotu.com/00/63/01/12h888piCneY.mp4_10s.mp4"];
+    
+    NSDictionary *option = @{ WKMediaPlayerControllerOptionsAutoplayKey : @(YES),
+                              WKMediaPlayerControllerOptionsLoopsKey : @(NO)
+                              };
+    
+    [self presentMediaPlayerControllerWithURL:fileUrl options:option completion:^(BOOL didPlayToEnd, NSTimeInterval endTime, NSError * _Nullable error) {
+        
+        [self dismissMediaPlayerController];
+        NSLog(@"didPlayToEnd : %ld----endTime: %f----error: %@",didPlayToEnd,endTime,error);
+        
+        
+    }];
+
+}
+
+
 - (IBAction)recordBtnClick {
-    [self startRecord];
+    
+    [self test];
+   // [self startRecord];
 }
 
 
